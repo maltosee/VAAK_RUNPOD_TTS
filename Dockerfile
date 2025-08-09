@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 RUN git clone https://github.com/maltosee/vaak_dev.git .
 
 # Install dependencies
-RUN pip install --no-cache-dir -r runpod_tts/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Set environment variables for the TTS model
 ENV PYTHONPATH=/app
