@@ -136,7 +136,8 @@ def handler(event):
         print(f"🚀 Handler called with text: '{text}', voice: {voice}")
         
         # Return generator for streaming
-        return chunked_audio_generator(text, voice)
+        result_list =  chunked_audio_generator(text, voice)
+        return result_list
         
     except Exception as e:
         print(f"❌ Handler error: {e}")
