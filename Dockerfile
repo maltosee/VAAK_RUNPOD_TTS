@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 # RUN python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'torch.uint64 exists: {hasattr(torch, \"uint64\")}'); assert hasattr(torch, 'uint64'), 'torch.uint64 not found!'"
 
 # Clone your repository
-RUN git clone https://github.com/maltosee/vaak_dev.git .
+RUN git clone https://github.com/maltosee/vaak_runpod_tts.git .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
