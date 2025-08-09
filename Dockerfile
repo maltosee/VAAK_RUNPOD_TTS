@@ -33,8 +33,5 @@ ENV TRANSFORMERS_CACHE=/app/models
 # Create models directory
 RUN mkdir -p /app/models
 
-# Change to the correct directory containing runpod_handler.py
-WORKDIR /app/runpod_tts
-
 # The handler is the entry point for the RunPod worker
 CMD ["python3", "-u", "runpod_handler.py"]
