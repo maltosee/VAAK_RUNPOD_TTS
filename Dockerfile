@@ -1,5 +1,8 @@
 FROM python:3.10-slim
 WORKDIR /app
+
+# Install git and other essentials
+RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
 RUN pip install runpod requests
 
 # Version-specific cache buster
