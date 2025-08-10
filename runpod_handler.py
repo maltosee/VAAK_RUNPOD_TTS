@@ -2,31 +2,30 @@ import runpod
 import requests
 import time
 
-# Add version identifier at top
-HANDLER_VERSION = "v2.0-SIMPLE-TEST"
+HANDLER_VERSION = "v3.0-REAL-WAV-TEST"
 print(f"🚨 HANDLER VERSION: {HANDLER_VERSION}")
-print(f"🚨 Handler file loaded at: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
 def handler(event):
-    print(f"🚨 HANDLER CALLED - VERSION: {HANDLER_VERSION}")
-    print(f"🚨 Event received: {event}")
+    print(f"🚨 HANDLER VERSION {HANDLER_VERSION} CALLED")
     
     try:
-        print("🚨 About to yield START")
         yield "START:test"
         
-        print("🚨 About to yield hex data")
-        yield "52494646FF00"
+        # Download real WAV file
+        print("🚨 Downloading WAV file...")
+        response = requests.get("https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav")
+        wav_data = response.content
+        print(f"🚨 Downloaded {len(wav_data)} bytes")
         
-        print("🚨 About to yield END")
+        # Stream entire WAV as hex
+        yield wav_data.hex()
+        
         yield "END:1"
-        
-        print("🚨 All yields completed successfully")
+        print("🚨 All yields completed")
         
     except Exception as e:
-        print(f"🚨 ERROR in handler: {e}")
+        print(f"🚨 ERROR: {e}")
         yield f"ERROR:{e}"
 
 if __name__ == "__main__":
-    print(f"🚨 Starting RunPod with handler version: {HANDLER_VERSION}")
     runpod.serverless.start({"handler": handler})
