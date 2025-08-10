@@ -13,7 +13,8 @@ def handler(event):
         
         # Download real WAV file
         print("🚨 Downloading WAV file...")
-        response = requests.get("https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav")
+        response = requests.get("https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba-online-audio-converter.com_-1.wav")
+
         wav_data = response.content
         print(f"🚨 Downloaded {len(wav_data)} bytes")
         
