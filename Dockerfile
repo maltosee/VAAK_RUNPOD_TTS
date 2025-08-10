@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 # This check is still useful for local debugging if needed.
 # RUN python -c "import torch; print(f'PyTorch version: {torch.__version__}'); print(f'torch.uint64 exists: {hasattr(torch, \"uint64\")}'); assert hasattr(torch, 'uint64'), 'torch.uint64 not found!'"
 
+# Add this line to bust cache
+RUN echo "Cache bust: $(date)" > /tmp/cachebust
 # Clone your repository
 RUN git clone https://github.com/maltosee/vaak_runpod_tts.git .
 
